@@ -1,8 +1,13 @@
 /**
  * Author: std-abs
  * Source: github
- * Description: [l, r, len]: p in [l, r] => s[p, p + len * 2] tandem.
- * You might need to compress manually.
+ * Description: Finds all tandem repeats (squares) in s
+ * in compressed form. Returns {L, R, len}, where
+ * for every p in [L, R], s.substr(p, len) ==
+ * s.substr(p + len, len).
+ * Intervals with the same len may need merging.
+ * Requires O(n) Z-function and a separator \# not in s.
+ * Time: O(n log n), Space: O(n log n) including output.
  * Status: Stress-tested
  */
  auto main_lorentz(string _s) {

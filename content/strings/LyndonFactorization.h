@@ -1,9 +1,12 @@
 /**
  * Author: std-abs
  * Source: github
- * Description: Partition s = w[0] + w[1] + ... + w[k-1],
- * w[0] >= w[1] >= ... >= w[k-1]
- * each w[i] strictly smaller than all its suffix
+ * Description: Computes the unique Lyndon factorization
+ * s = w[0] + w[1] + ... + w[k-1], where
+ * w[0] >= w[1] >= ... >= w[k-1] lexicographically,
+ * and each w[i] is strictly lexicographically smaller
+ * than all its non-empty proper suffixes.
+ * Time: O(|s|), Space: O(|s|) for output.
  * Status: Stress-tested
  */
 vector<string> duval(const string &s) {
