@@ -52,7 +52,9 @@ vl inv(vl A, int n) {
 }
 pair<vl, vl> div(vl A, vl B) {
 	int n = sz(A) - 1, m = sz(B) - 1;
-	assert(A[n] && B[m]);
+	while (n && !A[n]) A.pop_back(), --n;
+	while (m && !B[m]) B.pop_back(), --m;
+	assert(B[m]);
 	if (n < m) return {{0}, A};
 	vl Ar = A, Br = B;
 	reverse(all(Ar)); reverse(all(Br));
