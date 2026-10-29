@@ -1,8 +1,8 @@
 \chapter{Graph}
 
 \section{Fundamentals}
-	\kactlimport{BellmanFord.h}
-	\kactlimport{FloydWarshall.h}
+	% \kactlimport{BellmanFord.h}
+	% \kactlimport{FloydWarshall.h}
 	% \kactlimport{TopoSort.h}
 
 \section{Network flow}
@@ -10,6 +10,43 @@
 	\kactlimport{MinCostMaxFlow.h}
 	\kactlimport{EdmondsKarp.h}
 	\kactlimport{Dinic.h}
+		
+	\subsection*{Circulation and Lower Bounds}
+		\textbf{Circulation:}
+		Each vertex $v$ has demand
+		$f^{in}(v)-f^{out}(v)=d_v$.
+		Add super source $SS$, super sink $TT$:
+		\begin{itemize}
+		\setlength{\itemsep}{0pt}
+		\item $d_v<0$: add $SS\to v$, cap $-d_v$.
+		\item $d_v>0$: add $v\to TT$, cap $d_v$.
+		\end{itemize}
+		Feasible iff $\sum_v d_v=0$ and
+		$\operatorname{maxflow}(SS,TT)=\sum_{d_v>0}d_v$.
+
+		\textbf{Lower bounds:}
+		For each edge $(u,v)$ with bounds $[l,c]$,
+		take $l$ units of flow first:
+		\[
+		c'=c-l,\quad d_u\mathrel{+}=l,\quad d_v\mathrel{-}=l.
+		\]
+		Solve circulation with updated demands.
+		Recover original edge flow: $f=l+f'$.
+
+		\textbf{Max flow with lower bounds:}
+		Initially $d_v=0$ for all vertices.
+		After removing lower bounds, add $t\to s$
+		with capacity $\infty$ and solve circulation.
+		Let $F_0=f(t,s)$.
+		Remove $SS,TT$ and $t\to s$, keeping
+		the residual graph of original edges.
+		\[
+		F_{\max}=F_0+\operatorname{maxflow}(s,t).
+		\]
+		Original edge flow: $f=l+f'$ (final flow).
+		
+		\textbf{Time:} Two max-flow computations.
+	
 	\kactlimport{MinCut.h}
 	\kactlimport{GlobalMinCut.h}
 	\kactlimport{GomoryHu.h}
@@ -19,7 +56,8 @@
 	\kactlimport{DFSMatching.h}
 	\kactlimport{MinimumVertexCover.h}
 	\kactlimport{WeightedMatching.h}
-	\kactlimport{GeneralMatching.h}
+	% \kactlimport{GeneralMatching.h}
+	\kactlimport{Blossom.h}
 
 \section{DFS algorithms}
 	% \kactlimport{SCC.h}

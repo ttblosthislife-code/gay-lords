@@ -12,7 +12,7 @@
 
 #include "../numerical/NumberTheoreticTransform.h"
 
-ll fastLinearRecurrent(vl A, vl C, ll k) {
+ll fastLinearRecurrence(vl A, vl C, ll k) {
 	assert(sz(A) == sz(C));
 	int n = sz(A);
 	vl G(n + 1), Q(n + 1);
